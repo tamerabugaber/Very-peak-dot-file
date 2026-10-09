@@ -1,0 +1,101 @@
+/* ربط ألوان Pywal الديناميكية */
+@import '/home/tamer/.cache/wal/colors-waybar.css';
+
+/* إعادة تعيين المسميات لتطابق الكود الخاص بك */
+@define-color base      @background;
+@define-color mantle    @background;
+@define-color surface   @color8;
+@define-color text      @foreground;
+@define-color blue      @color4;
+@define-color mauve     @color5;
+@define-color green     @color2;
+@define-color yellow    @color3;
+@define-color red       @color1;
+@define-color peach     @color11;
+@define-color teal      @color6;
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans Arabic", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: @text;
+}
+
+/* الكبسولات */
+#workspaces,
+#window,
+#clock,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#battery,
+#tray,
+#custom-logo {
+  background: alpha(@base, 0.85);
+  padding: 0 14px;
+  margin: 2px 0;
+  border-radius: 14px;
+  border: 1px solid alpha(@surface, 0.9);
+}
+
+#custom-logo {
+  color: @blue;
+  font-size: 17px;
+  padding: 0 14px;
+}
+
+/* مساحات العمل */
+#workspaces {
+  padding: 0 6px;
+}
+#workspaces button {
+  color: @surface;
+  padding: 0 6px;
+  background: transparent;
+  transition: all 0.25s ease;
+}
+#workspaces button.active {
+  color: @mauve;
+  background: alpha(@mauve, 0.15);
+  border-radius: 10px;
+}
+#workspaces button:hover {
+  color: @blue;
+  background: alpha(@blue, 0.15);
+  border-radius: 10px;
+}
+#workspaces button.urgent {
+  color: @red;
+}
+
+#window { color: @text; }
+window#waybar.empty #window { background: transparent; border: none; }
+
+/* الألوان لكل وحدة */
+#clock      { color: @mauve; }
+#pulseaudio { color: @blue; }
+#network    { color: @teal; }
+#cpu        { color: @peach; }
+#memory     { color: @yellow; }
+#battery    { color: @green; }
+
+#battery.warning  { color: @yellow; }
+#battery.critical { color: @red; }
+#battery.charging { color: @teal; }
+#pulseaudio.muted { color: @red; }
+#network.disconnected { color: @red; }
+
+tooltip {
+  background: @mantle;
+  border: 1px solid @surface;
+  border-radius: 10px;
+}
+tooltip label { color: @text; }
